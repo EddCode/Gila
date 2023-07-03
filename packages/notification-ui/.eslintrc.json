@@ -1,0 +1,45 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+        "standard",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["react"],
+    "overrides": [
+        {
+            "files": ["vite.config.js"],
+            "rules": {
+                "import/no-default-export": "off"
+            }
+        }
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "import/no-default-export": "error",
+        "import/order": [
+            "error",
+            {
+                "alphabetize": {
+                    "order": "asc"
+                },
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index"
+                ],
+                "newlines-between": "always"
+            }
+        ]
+    }
+}

@@ -1,3 +1,3 @@
 export * from './EmailNotificator'
 export * from './PushNotificator'
-export * from './SMSNotificator'
+export * from './SMSNotficator'

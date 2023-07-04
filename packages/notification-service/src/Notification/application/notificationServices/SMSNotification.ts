@@ -9,7 +9,7 @@ export class SMSService implements NotificationStrategy {
   }
 
   async sendNotification (notification: Notification): Promise<Notification> {
-    await this.notification.sendSMS(notification.message, notification.reciver)
-    return { message: 'hello', reciver: 'world', category: 'sms' }
+    await this.notification.sendSMS(notification.category, notification.message)
+    return { message: 'hello', category: 'sms' }
   }
 }

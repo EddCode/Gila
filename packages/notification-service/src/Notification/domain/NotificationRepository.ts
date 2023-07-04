@@ -3,7 +3,6 @@ export interface NotificationRepository {
 }
 
 export interface Notification {
-  reciver: string
   category: string
   message: string
 }

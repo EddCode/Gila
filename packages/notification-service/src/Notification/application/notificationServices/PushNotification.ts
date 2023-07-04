@@ -1,7 +1,7 @@
 import { type PushNotificationService } from '../../../shared/repositories/NotificationService'
 import type { NotificationStrategy, Notification } from '../../domain'
 
-export class PushStrategy implements NotificationStrategy {
+export class PushService implements NotificationStrategy {
   private readonly notification: PushNotificationService
 
   constructor (notification: PushNotificationService) {
@@ -9,7 +9,7 @@ export class PushStrategy implements NotificationStrategy {
   }
 
   async sendNotification (notification: Notification): Promise<Notification> {
-    await this.notification.sendPushNotification(notification.message, notification.reciver)
+    await this.notification.sendPushNotification(notification.category, notification.message)
     return notification
   }
 }

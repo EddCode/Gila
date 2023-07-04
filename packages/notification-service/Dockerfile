@@ -10,5 +10,6 @@ RUN pnpm install
 COPY . .
 
 EXPOSE 8080
+EXPOSE 9229
 
 CMD ["pnpm", "dev"]

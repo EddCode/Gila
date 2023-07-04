@@ -23,8 +23,9 @@ export const createSchema = {
   schema: {
     body: {
       type: 'object',
+      required: ['type', 'message'],
       properties: {
-        type: { type: 'string' },
+        type: { type: 'string', enum: ['Sports', 'Finance', 'Movies'] },
         message: { type: 'string' }
       }
     },

@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  web:
+    container_name: notification-web
+    build:
+      context: ./packages/notification-ui
+    ports:
+      - "4000:4000"
+    links:
+      - api
+    volumes:
+      - ./packages/notification-ui:/usr/src/app
+      - /usr/src/app/node_modules
+  api:
+    container_name: notification-api
+    build:
+      context: ./packages/notification-service
+    environment:
+      - MONGO_DB=mongodb
+      - MONGO_USERNAME="${DB_USER}"
+      - MONGO_PASSWORD="${DB_PASSWORD}"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./packages/notification-service:/usr/src/app
+      - /usr/src/app/node_modules
+    links:
+      - mongodb
+  mongodb:
+    image: mongo:latest
+    restart: always
+    container_name: Mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME="${DB_USER}"
+      - MONGO_INITDB_ROOT_PASSWORD="${DB_PASSWORD}"
+    ports:
+      - "27017:27017"
+    volumes:
+      - notificationDB:/data/db
+volumes:
+  notificationDB:
+networks:
+  notificationNet:
+    driver: bridge

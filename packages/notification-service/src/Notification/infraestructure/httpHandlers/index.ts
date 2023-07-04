@@ -1,6 +1,6 @@
 import { type FastifyInstance, type FastifyReply, type FastifyRequest } from 'fastify'
 
-import { opts } from './schemas'
+import { opts, createSchema } from './schemas'
 
 /* eslint-disable-next-line @typescript-eslint/explicit-function-return-type */
 async function routes (fastify: FastifyInstance) {
@@ -10,6 +10,10 @@ async function routes (fastify: FastifyInstance) {
       { type: 'info', message: 'hello', createdAt: new Date() }
     ]
     reply.send({ message: 'success', data })
+  })
+
+  fastify.post('/', createSchema, async (_request: FastifyRequest, reply: FastifyReply) => {
+    reply.send({ message: 'success' })
   })
 }
 

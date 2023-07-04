@@ -7,11 +7,13 @@
   "repository": "http://github.com/EddCode/gila",
   "scripts": {
     "lint": "eslint . --ext .ts,.js",
+    "fake:users": "ts-node ./src/infraestructure/faker/users.ts",
     "dev": "nodemon",
     "test": "jest",
     "tsc": "tsc"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@types/jest": "29.5.2",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^36.0.0",

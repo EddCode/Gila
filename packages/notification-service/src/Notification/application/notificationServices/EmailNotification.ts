@@ -9,7 +9,7 @@ export class EmailService implements NotificationStrategy {
   }
 
   async sendNotification (notification: Notification): Promise<Notification> {
-    await this.notification.sendEmail(notification.category, notification.message)
+    await this.notification.sendEmail(notification)
     return notification
   }
 }

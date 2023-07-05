@@ -1,9 +1,11 @@
+import { type Notification } from '../../Notification/domain'
+
 export interface SMSNotificationService {
   sendSMS: (message: string, phoneNumber: string) => Promise<boolean>
 }
 
 export interface EmailNotificationService {
-  sendEmail: (message: string, email: string) => Promise<boolean>
+  sendEmail: (notification: Notification) => Promise<boolean>
 }
 
 export interface PushNotificationService {

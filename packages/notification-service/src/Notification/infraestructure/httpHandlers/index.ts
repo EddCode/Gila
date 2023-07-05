@@ -26,7 +26,7 @@ async function routes (fastify: FastifyInstance) {
 
     await notifications.processNotification(type, message)
 
-    reply.send({ message: 'success' })
+    reply.send({ message: 'Send Notifications' })
   })
 }
 

@@ -1,4 +1,3 @@
-import { factory } from 'typescript'
 import { type EmailNotificationService, type PushNotificationService, type SMSNotificationService } from '../../shared/repositories/NotificationService'
 import { NotificationFactory } from './notificationFactory'
 import { type NotificationType } from './notificationTypes'
@@ -45,7 +44,7 @@ export class NotificationProccesor {
           .build()
 
         const notification = factory.getNotification(channel, category)
-        return await notification.send({ message, category })
+        return await notification.send({ message, category, user, messageType: channel })
       })
     })
 

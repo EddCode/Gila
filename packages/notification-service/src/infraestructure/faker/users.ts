@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { faker } from '@faker-js/faker'
 
-const categories = ['Sports', 'Movies', 'Finace']
+const categories = ['Sports', 'Movies', 'Finance']
 const channels = ['SMS', 'Email', 'Push Notification']
 
 const fakerCategories = faker.datatype.number({ min: 1, max: categories.length })

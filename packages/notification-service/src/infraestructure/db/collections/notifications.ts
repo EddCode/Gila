@@ -2,10 +2,6 @@ import mongoose from 'mongoose'
 import Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
-    required: true
-  },
   name: {
     type: String,
     required: [true, 'Name is required']
@@ -21,10 +17,6 @@ const UserSchema = new Schema({
 }, { timestamps: true })
 
 const NotificationSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
-    required: true
-  },
   category: {
     type: String,
     required: [true, 'Category is required']

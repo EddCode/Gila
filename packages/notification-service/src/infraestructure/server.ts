@@ -1,4 +1,5 @@
 import Fastify from 'fastify'
+import cors from '@fastify/cors'
 
 import { routes } from '../Notification/infraestructure/httpHandlers'
 import config from './config'
@@ -7,6 +8,8 @@ import { connectDB } from './db/connection'
 const fastify = Fastify({
   logger: config.server.logger
 })
+
+fastify.register(cors)
 
 fastify.register(routes, { prefix: '/api/v1/logs' })
 

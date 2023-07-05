@@ -3,16 +3,14 @@ import { type FastifyInstance, type FastifyReply, type FastifyRequest } from 'fa
 import { User } from '../repositories'
 import { NotificationProccesor } from '../../application'
 import { EmailNotificator, SMSNotificator, PushNotificator } from '../gateways'
+import { MongoRepository } from '../repositories/notifications'
 import { opts, createSchema } from './schemas'
 
 /* eslint-disable-next-line @typescript-eslint/explicit-function-return-type */
 async function routes (fastify: FastifyInstance) {
   fastify.get('/', opts, async (_request: FastifyRequest, reply: FastifyReply) => {
-    const data = [
-      { type: 'info', message: 'hello', createdAt: new Date() },
-      { type: 'info', message: 'hello', createdAt: new Date() }
-    ]
-    reply.send({ message: 'success', data })
+    const data = await NotificationProccesor.getAllNotifications(new MongoRepository())
+    reply.send({ message: 'success', logs: data })
   })
 
   fastify.post('/', createSchema, async (request: FastifyRequest, reply: FastifyReply) => {

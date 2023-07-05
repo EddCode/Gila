@@ -5,12 +5,20 @@ export const opts = {
         type: 'object',
         properties: {
           message: { type: 'string' },
-          data: {
+          logs: {
             type: 'array',
             properties: {
-              type: { type: 'string' },
+              category: { type: 'string' },
               message: { type: 'string' },
-              createdAt: { type: 'string' }
+              messageType: { type: 'string' },
+              user: {
+                type: 'object',
+                properties: {
+                  name: { type: 'string' },
+                  email: { type: 'string' },
+                  phone: { type: 'string' }
+                }
+              }
             }
           }
         }

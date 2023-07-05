@@ -1,4 +1,5 @@
 import { type EmailNotificationService, type PushNotificationService, type SMSNotificationService } from '../../shared/repositories/NotificationService'
+import { type Notification } from '../domain'
 import { NotificationFactory } from './notificationFactory'
 import { type NotificationType } from './notificationTypes'
 
@@ -26,6 +27,11 @@ export class NotificationProccesor {
     this.EmailService = emailService
     this.SMS = smsService
     this.PushService = pushService
+  }
+
+  static async getAllNotifications (notificationRepository: any): Promise<Notification> {
+    const notifications = await notificationRepository.getAllNotifications()
+    return notifications
   }
 
   async processNotification (type: string, message: string): Promise<void> {

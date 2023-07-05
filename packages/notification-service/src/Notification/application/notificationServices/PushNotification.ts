@@ -9,7 +9,7 @@ export class PushService implements NotificationStrategy {
   }
 
   async sendNotification (notification: Notification): Promise<Notification> {
-    await this.notification.sendPushNotification(notification.category, notification.message)
+    await this.notification.sendPushNotification(notification)
     return notification
   }
 }

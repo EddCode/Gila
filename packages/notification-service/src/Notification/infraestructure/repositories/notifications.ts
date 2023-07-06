@@ -13,7 +13,7 @@ export class MongoRepository {
 
   async getAllNotifications (): Promise<Notification[]> {
     try {
-      const data = await NotificationRepository.find()
+      const data = await NotificationRepository.find().sort({ createdAt: -1 })
       return data.map(notification => ({
         category: notification.category,
         message: notification.message,
